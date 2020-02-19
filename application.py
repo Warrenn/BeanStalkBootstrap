@@ -113,7 +113,7 @@ welcome = """
   
   <div class="linksColumn"> 
     <h2>Video Tutorials</h2>
-    <ul>" + "
+    <ul>
     <li>YouTube: <a href="https://www.youtube.com/watch?v=lBu7Ov3Rt-M&feature=youtu.be">Run a Docker Container from the Docker Registry</a></li>
     <li>YouTube: <a href="https://www.youtube.com/watch?v=pLw6MLqwmew&feature=youtu.be">Use Private Docker Repositories</a></li>
     </ul>
@@ -148,7 +148,7 @@ def application(environ, start_response):
             logger.warning('Error retrieving request body for async work.')
         response = ''
     else:
-        response = environ['ACCESS_KEY_ID']
+        response = welcome
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
 
