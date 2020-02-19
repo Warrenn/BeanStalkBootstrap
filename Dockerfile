@@ -8,6 +8,4 @@ RUN mkdir /tmp/sample-app
 EXPOSE 8000
 
 # Run it
-ENTRYPOINT ["python", "/tmp/application.py"]
-
-CMD ["sh","entrypoint.sh"]
+ENTRYPOINT ["sh","entrypoint.sh"]

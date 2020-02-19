@@ -6,4 +6,4 @@ export DATABASE_URL=DATABASE_URL
 export RAILS_MASTER_KEY=RAILS_MASTER_KEY
 export SECRET_KEY_BASE=SECRET_KEY_BASE
 
-# python /tmp/application.py
+python /tmp/application.py
