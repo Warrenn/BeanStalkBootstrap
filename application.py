@@ -22,7 +22,7 @@ handler.setFormatter(formatter)
 # add Handler to Logger
 logger.addHandler(handler)
 
-welcome = """
+welcome = '''
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,10 +32,12 @@ welcome = """
   </style>
 </head>
 <body id="sample">
-  plain
+  {0} </br>
+{1} </br>
+{2} </br>
 </body>
 </html>
-"""
+'''
 
 def application(environ, start_response):
     path    = environ['PATH_INFO']
@@ -52,7 +54,7 @@ def application(environ, start_response):
             logger.warning('Error retrieving request body for async work.')
         response = ''
     else:
-        response = welcome
+        response = welcome.format(environ['ACCESS_KEY_ID'], environ['SECRET_ACCESS_KEY'], environ['PUBLISHABLE_KEY'])
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
 
@@ -64,5 +66,5 @@ class ThreadingWSGIServer(ThreadingMixIn, WSGIServer):
 
 if __name__ == '__main__':
     httpd = make_server('', 8000, application, ThreadingWSGIServer)
-    print "Serving on port 8000..."
+    print "Serving on the port 8000..."
     httpd.serve_forever()
