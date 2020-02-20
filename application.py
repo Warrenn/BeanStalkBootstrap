@@ -50,8 +50,8 @@ def application(environ, start_response):
     # for row in result:
     #     print("   ", row[0])
     #     stringout = stringout + ";" + row[0]
-    for key in environ:
-        stringout = key + " = " + environ[key] + ";"
+    # for key in environ:
+    #     stringout = key + " = " + environ[key] + ";"
     if method == 'POST':
         try:
             if path == '/':
@@ -64,7 +64,7 @@ def application(environ, start_response):
             logger.warning('Error retrieving request body for async work.')
         response = ''
     else:
-        response = welcome.format(stringout)
+        response = welcome.format(environ)
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
 
