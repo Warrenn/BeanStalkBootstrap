@@ -9,6 +9,7 @@ export DATABASE_URL=$(aws ssm get-parameter --name "/Config/Staging/vbios-platfo
 export RAILS_MASTER_KEY=RAILS_MASTER_KEY
 export SECRET_KEY_BASE=SECRET_KEY_BASE
 
+aws ssm get-parameter --name "/Config/Staging/vbios-platform/DATABASE_URL" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text > '/tmp/sample-app/succ-app.log' 2>'/tmp/sample-app/succ-app.log'
 printenv >> '/tmp/sample-app/printenv-app.log'
 
 exec python /tmp/application.py
