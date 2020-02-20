@@ -59,7 +59,7 @@ def application(environ, start_response):
             logger.warning('Error retrieving request body for async work.')
         response = ''
     else:
-        response = welcome.format(environ['ACCESS_KEY_ID'], environ['SECRET_ACCESS_KEY'], environ['PUBLISHABLE_KEY'])
+        response = welcome.format(result)
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
 
