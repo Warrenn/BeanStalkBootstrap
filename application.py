@@ -47,8 +47,8 @@ def application(environ, start_response):
     result = cur.fetchall()
     stringout = ""
     for row in result:
-        print("   ", row[1])
-        stringout = stringout + ";" + row[1]
+        print("   ", row[0])
+        stringout = stringout + ";" + row[0]
     if method == 'POST':
         try:
             if path == '/':
