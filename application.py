@@ -34,8 +34,6 @@ welcome = '''
 </head>
 <body id="sample">
   {0} </br>
-{1} </br>
-{2} </br>
 </body>
 </html>
 '''
@@ -47,6 +45,10 @@ def application(environ, start_response):
     cur = conn.cursor()
     cur.execute("SELECT datname FROM pg_database;")
     result = cur.fetchall()
+    stringout = ""
+    for row in result:
+        print("   ", row[1])
+        stringout = stringout + ";" + row[1]
     if method == 'POST':
         try:
             if path == '/':
@@ -59,7 +61,7 @@ def application(environ, start_response):
             logger.warning('Error retrieving request body for async work.')
         response = ''
     else:
-        response = welcome.format(result[0])
+        response = welcome.format(stringout)
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
 
