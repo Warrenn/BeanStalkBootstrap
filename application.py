@@ -41,14 +41,17 @@ welcome = '''
 def application(environ, start_response):
     path    = environ['PATH_INFO']
     method  = environ['REQUEST_METHOD']
-    conn  = psycopg2.connect(environ['DATABASE_URL'])
-    cur = conn.cursor()
-    cur.execute("SELECT datname FROM pg_database;")
-    result = cur.fetchall()
+    # conn  = psycopg2.connect(environ['DATABASE_URL'])
+    # cur = conn.cursor()
+    # cur.execute("SELECT datname FROM pg_database;")
+    # result = cur.fetchall()
+
     stringout = ""
-    for row in result:
-        print("   ", row[0])
-        stringout = stringout + ";" + row[0]
+    # for row in result:
+    #     print("   ", row[0])
+    #     stringout = stringout + ";" + row[0]
+    for key in environ:
+        stringout = key + " = " + environ[key] + ";"
     if method == 'POST':
         try:
             if path == '/':
