@@ -3,8 +3,8 @@ FROM python:2.7
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt upgrade -y
 RUN apt install postgresql -y
-RUN pip install psycopg2 -y
-RUN pip install awscli -y
+RUN pip install psycopg2
+RUN pip install awscli
 
 # Add sample application
 ADD application.py /tmp/application.py
