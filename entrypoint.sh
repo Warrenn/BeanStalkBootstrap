@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
-export ACCESS_KEY_ID=ACCESS_KEY_ID
-export SECRET_ACCESS_KEY=SECRET_ACCESS_KEY
-export PUBLISHABLE_KEY=PUBLISHABLE_KEY
-export SECRET_KEY=SECRET_KEY
-export DATABASE_URL=$(aws ssm get-parameter --name "/Config/Staging/vbios-platform/DATABASE_URL" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
-export RAILS_MASTER_KEY=RAILS_MASTER_KEY
-export SECRET_KEY_BASE=SECRET_KEY_BASE
+export DATABASE_URL=$(aws ssm get-parameter --name "/config/staging/vbios-platform/DATABASE_URL" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
+export RAILS_MASTER_KEY=$(aws ssm get-parameter --name "/config/staging/vbios-platform/RAILS_MASTER_KEY" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
+export SECRET_KEY_BASE=$(aws ssm get-parameter --name "/config/staging/vbios-platform/SECRET_KEY_BASE" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
+export PUBLISHABLE_KEY=$(aws ssm get-parameter --name "/config/staging/vbios-platform/PUBLISHABLE_KEY" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
+export SECRET_KEY=$(aws ssm get-parameter --name "/config/staging/vbios-platform/SECRET_KEY" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
+export MAILGUN_API_KEY=$(aws ssm get-parameter --name "/config/staging/vbios-platform/MAILGUN_API_KEY" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
 
-aws ssm get-parameter --name "/Config/Staging/vbios-platform/DATABASE_URL" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text > '/tmp/sample-app/succ-app.log' 2>'/tmp/sample-app/succ-app.log'
 printenv >> '/tmp/sample-app/printenv-app.log'
 
 exec python /tmp/application.py
