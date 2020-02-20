@@ -6,6 +6,6 @@ export DATABASE_URL=$(ssm get-parameter --name "/Config/Staging/vbios-platform/D
 export RAILS_MASTER_KEY=RAILS_MASTER_KEY
 export SECRET_KEY_BASE=SECRET_KEY_BASE
 
-printenv
+echo printenv
 
 python /tmp/application.py
