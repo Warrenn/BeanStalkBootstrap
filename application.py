@@ -1,5 +1,6 @@
 import logging
 import logging.handlers
+import psycopg2
 
 from wsgiref.simple_server import make_server, WSGIServer
 from SocketServer import ThreadingMixIn
@@ -42,6 +43,10 @@ welcome = '''
 def application(environ, start_response):
     path    = environ['PATH_INFO']
     method  = environ['REQUEST_METHOD']
+    conn  = psycopg2.connect(environ['DATABASE_URL'])
+    cur = conn.cursor()
+    cur.execute("SELECT datname FROM pg_database;")
+    result = cur.fetchall()
     if method == 'POST':
         try:
             if path == '/':
@@ -59,6 +64,8 @@ def application(environ, start_response):
     headers = [('Content-type', 'text/html')]
 
     start_response(status, headers)
+    cur.close()
+    conn.close()
     return [response]
 
 class ThreadingWSGIServer(ThreadingMixIn, WSGIServer): 
