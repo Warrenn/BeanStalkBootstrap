@@ -1,0 +1,24 @@
+branch-defaults:
+  master:
+    environment: VbioPlatform-env
+  recovery:
+    environment: VbioPlatform-env
+    group_suffix: null
+environment-defaults:
+  VbioPlatform-env:
+    branch: null
+    repository: null
+global:
+  application_name: vbio-platform
+  branch: null
+  default_ec2_keyname: null
+  default_platform: docker
+  default_region: us-east-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  repository: null
+  sc: git
+  workspace_type: Application
