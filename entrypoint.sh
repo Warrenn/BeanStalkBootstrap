@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+## import ##
 
 get_parameter() {
     echo "$(aws ssm get-parameter --name "/config/$RAILS_ENV/vbios-platform/$1" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)"
