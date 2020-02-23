@@ -1,0 +1,8 @@
+
+# Elastic Beanstalk Files
+.elasticbeanstalk
+.elasticbeanstalk/*
+
+.build
+.build/*
+
