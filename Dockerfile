@@ -1,8 +1,8 @@
 FROM python:2.7
 # install your dependencies
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt upgrade -y
-RUN apt install postgresql -y
+RUN apt upgrade -y && apt install \
+    postgresql -y
 RUN pip install psycopg2
 RUN pip install awscli
 
