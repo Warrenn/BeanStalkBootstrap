@@ -8,8 +8,4 @@ eb config put $ENVIRONMENT
 
 eb deploy $ENVIRONMENT
 
-aws elasticbeanstalk update-environment \
-    --environment-name $ENVIRONMENT \ 
-    --application-name $APPLICATION \
-    --region $AWS_REGION \
-    --template-name $ENVIRONMENT
+aws elasticbeanstalk update-environment --environment-name $ENVIRONMENT --application-name $APPLICATION --region $AWS_REGION --template-name $ENVIRONMENT
