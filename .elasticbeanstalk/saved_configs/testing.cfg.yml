@@ -1,9 +1,11 @@
 AWSConfigurationTemplateVersion: 1.1.0.0
-OptionSettings:  
+EnvironmentConfigurationMetadata:
+  DateModified: '1582476470074'
+OptionSettings:
   AWSEBV2LoadBalancer.aws:elbv2:loadbalancer:
-    AccessLogsS3Prefix: vbios-platform-production-test
-    AccessLogsS3Enabled: true
     AccessLogsS3Bucket: verity-access-logs
+    AccessLogsS3Enabled: true
+    AccessLogsS3Prefix: vbios-platform-test-test
   aws:elasticbeanstalk:application:environment:
     HOST: https://afteryoursurgery.com
     LANG: en_US.UTF-8

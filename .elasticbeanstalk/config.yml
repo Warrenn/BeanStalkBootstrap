@@ -2,10 +2,13 @@ branch-defaults:
   master:
     environment: VbioPlatform-env
   recovery:
-    environment: VbioPlatform-env
+    environment: testing
     group_suffix: null
 environment-defaults:
   VbioPlatform-env:
+    branch: null
+    repository: null
+  testing:
     branch: null
     repository: null
 global:
