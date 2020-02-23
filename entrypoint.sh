@@ -6,7 +6,7 @@ get_parameter() {
 }
 
 
-if [ -z "${ACCESS_KEY_ID}" ]; then
+if ( exec 2>/dev/null ; echo > /dev/tcp/169.254.169.254/80 ) ; then
     ROLENAME=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/ -s)
     KeyURL="http://169.254.169.254/latest/meta-data/iam/security-credentials/"$ROLENAME"/"
     wget $KeyURL -q -O Iam.json
