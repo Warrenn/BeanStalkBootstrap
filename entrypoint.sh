@@ -10,9 +10,9 @@ if ( exec 2>/dev/null ; echo > /dev/tcp/169.254.169.254/80 ) ; then
     ROLENAME=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/ -s)
     KeyURL="http://169.254.169.254/latest/meta-data/iam/security-credentials/"$ROLENAME"/"
     wget $KeyURL -q -O Iam.json
-    ACCESS_KEY_ID="${ACCESS_KEY_ID:-$(grep -Po '.*"AccessKeyId".*' Iam.json | sed 's/ //g' | sed 's/"//g' | sed 's/,//g' | sed 's/AccessKeyId://g')}"
-    SECRET_ACCESS_KEY="${SECRET_ACCESS_KEY:-$(grep -Po '.*"SecretAccessKey".*' Iam.json | sed 's/ //g' | sed 's/"//g' | sed 's/,//g' | sed 's/SecretAccessKey://g')}"
-    AWS_SESSION_TOKEN="${AWS_SESSION_TOKEN:-$(grep -Po '.*"Token".*' Iam.json | sed 's/ //g' | sed 's/"//g' | sed 's/,//g' | sed 's/Token://g')}"
+    export ACCESS_KEY_ID="${ACCESS_KEY_ID:-$(grep -Po '.*"AccessKeyId".*' Iam.json | sed 's/ //g' | sed 's/"//g' | sed 's/,//g' | sed 's/AccessKeyId://g')}"
+    export SECRET_ACCESS_KEY="${SECRET_ACCESS_KEY:-$(grep -Po '.*"SecretAccessKey".*' Iam.json | sed 's/ //g' | sed 's/"//g' | sed 's/,//g' | sed 's/SecretAccessKey://g')}"
+    export AWS_SESSION_TOKEN="${AWS_SESSION_TOKEN:-$(grep -Po '.*"Token".*' Iam.json | sed 's/ //g' | sed 's/"//g' | sed 's/,//g' | sed 's/Token://g')}"
     rm Iam.json -f
 fi
 
