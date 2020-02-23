@@ -12,7 +12,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 RUN mkdir /tmp/sample-app
 
-EXPOSE 8000
+EXPOSE 3000
 
 # Run it
 ENTRYPOINT ["sh","/entrypoint.sh"]
