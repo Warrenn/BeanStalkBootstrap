@@ -16,3 +16,5 @@ EXPOSE 3000
 
 # Run it
 ENTRYPOINT ["sh","/entrypoint.sh"]
+
+CMD ["python","/tmp/application.py"]
