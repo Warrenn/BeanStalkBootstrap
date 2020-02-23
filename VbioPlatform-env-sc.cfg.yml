@@ -1,0 +1,82 @@
+AWSConfigurationTemplateVersion: 1.1.0.0
+EnvironmentConfigurationMetadata:
+  DateCreated: '1582467386000'
+  DateModified: '1582468246339'
+  Description: Configuration created from the EB CLI using "eb config save".
+EnvironmentTier:
+  Name: WebServer
+  Type: Standard
+OptionSettings:
+  :default.aws:elbv2:listener:default:
+    ListenerEnabled: true
+  AWSEBV2LoadBalancer.aws:elbv2:loadbalancer:
+    AccessLogsS3Bucket: verity-access-logs
+    AccessLogsS3Enabled: true
+    AccessLogsS3Prefix: test
+  aws:elasticbeanstalk:cloudwatch:logs:health:
+    HealthStreamingEnabled: true
+  aws:elasticbeanstalk:environment:
+    ServiceRole: arn:aws:iam::567465148987:role/aws-elasticbeanstalk-service-role
+  aws:elasticbeanstalk:healthreporting:system:
+    ConfigDocument:
+      CloudWatchMetrics:
+        Environment:
+          ApplicationLatencyP10: null
+          ApplicationLatencyP50: null
+          ApplicationLatencyP75: null
+          ApplicationLatencyP85: null
+          ApplicationLatencyP90: null
+          ApplicationLatencyP95: null
+          ApplicationLatencyP99: null
+          ApplicationLatencyP99.9: null
+          ApplicationRequests2xx: null
+          ApplicationRequests3xx: null
+          ApplicationRequests4xx: null
+          ApplicationRequests5xx: null
+          ApplicationRequestsTotal: null
+          InstancesDegraded: null
+          InstancesInfo: null
+          InstancesNoData: null
+          InstancesOk: null
+          InstancesPending: null
+          InstancesSevere: null
+          InstancesUnknown: null
+          InstancesWarning: null
+        Instance:
+          ApplicationLatencyP10: null
+          ApplicationLatencyP50: null
+          ApplicationLatencyP75: null
+          ApplicationLatencyP85: null
+          ApplicationLatencyP90: null
+          ApplicationLatencyP95: null
+          ApplicationLatencyP99: null
+          ApplicationLatencyP99.9: null
+          ApplicationRequests2xx: null
+          ApplicationRequests3xx: null
+          ApplicationRequests4xx: null
+          ApplicationRequests5xx: null
+          ApplicationRequestsTotal: null
+          CPUIdle: null
+          CPUIowait: null
+          CPUIrq: null
+          CPUNice: null
+          CPUSoftirq: null
+          CPUSystem: null
+          CPUUser: null
+          InstanceHealth: null
+          LoadAverage1min: null
+          LoadAverage5min: null
+          RootFilesystemUtil: null
+      Rules:
+        Environment:
+          Application:
+            ApplicationRequests4xx:
+              Enabled: true
+          ELB:
+            ELBRequests4xx:
+              Enabled: true
+      Version: 1
+    SystemType: enhanced
+Platform:
+  PlatformArn: arn:aws:elasticbeanstalk:us-east-1::platform/Docker running on 64bit
+    Amazon Linux/2.14.1
