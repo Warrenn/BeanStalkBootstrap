@@ -5,7 +5,6 @@ get_parameter() {
     echo "$(aws ssm get-parameter --name "/config/$RAILS_ENV/vbios-platform/$1" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)"
 }
 
-
 if ( exec 2>/dev/null ; echo > /dev/tcp/169.254.169.254/80 ) ; then
     ROLENAME=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/ -s)
     KeyURL="http://169.254.169.254/latest/meta-data/iam/security-credentials/"$ROLENAME"/"
