@@ -3,9 +3,5 @@
     "Logging": "/tmp/sample-app",
     "Image": {
         "Update": "true"
-    },
-    "Ports": [{
-        "ContainerPort": 3000,
-        "HostPort": 3000
-    }]
+    }
 }
