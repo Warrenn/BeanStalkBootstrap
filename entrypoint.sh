@@ -23,6 +23,7 @@ export PUBLISHABLE_KEY="${PUBLISHABLE_KEY:-$(get_parameter "PUBLISHABLE_KEY")}"
 export SECRET_KEY="${SECRET_KEY:-$(get_parameter "SECRET_KEY")}"
 export MAILGUN_API_KEY="${MAILGUN_API_KEY:-$(get_parameter "MAILGUN_API_KEY")}"
 
+cat ./entrypoint.sh >> "/tmp/sample-app/enttrypoint.log"
 printenv >> "/tmp/sample-app/printenv.log"
 # Remove a potentially pre-existing server.pid for Rails.
 rm -rf /vbio/tmp/pids/server.pid
