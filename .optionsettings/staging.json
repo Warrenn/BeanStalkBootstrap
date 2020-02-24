@@ -1,0 +1,14 @@
+[
+    { "Namespace": "aws:elbv2:loadbalancer", "OptionName": "AccessLogsS3Bucket", "Value": "verity-access-logs" },
+    { "Namespace": "aws:elbv2:loadbalancer", "OptionName": "AccessLogsS3Enabled", "Value": "true" },
+    { "Namespace": "aws:elbv2:loadbalancer", "OptionName": "AccessLogsS3Prefix", "Value": "vbios-platform-staging" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "HOST", "Value": "https://afteryoursurgery.com" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "LANG", "Value": "en_US.UTF-8" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "MAILGUN_DOMAIN", "Value": "mg.afteryoursurgery.com" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "MAIL_HOST_DOMAIN", "Value": "afteryoursurgery.com" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "RACK_ENV", "Value": "staging" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "RAILS_ENV", "Value": "staging" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "RAILS_LOG_TO_STDOUT", "Value": "enabled" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "RAILS_SERVE_STATIC_FILES", "Value": "enabled" },
+    { "Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "WEBPACKER_DEV_SERVER_HOST", "Value": "webpack" }
+]
