@@ -7,7 +7,7 @@ RUN pip install psycopg2
 RUN pip install awscli
 
 # Add sample application
-ADD application.py /tmp/application.py
+COPY application.py /tmp/application.py
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 RUN mkdir /tmp/sample-app
