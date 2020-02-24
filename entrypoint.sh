@@ -3,9 +3,7 @@ set -e
 ## import ##
 
 get_parameter() {
-    value=$(aws ssm get-parameter --name "/config/$RAILS_ENV/vbios-platform/$1" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
-    echo "$value" >> "/tmp/sample-app/get_parameter.log"
-    echo "$value"
+    echo "$(aws ssm get-parameter --name "/config/$RAILS_ENV/vbios-platform/$1" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)"
 }
 
 if ( exec 2>/dev/null ; echo > /dev/tcp/169.254.169.254/80 ) ; then
@@ -24,6 +22,8 @@ export SECRET_KEY_BASE="${SECRET_KEY_BASE:-$(get_parameter "SECRET_KEY_BASE")}"
 export PUBLISHABLE_KEY="${PUBLISHABLE_KEY:-$(get_parameter "PUBLISHABLE_KEY")}"
 export SECRET_KEY="${SECRET_KEY:-$(get_parameter "SECRET_KEY")}"
 export MAILGUN_API_KEY="${MAILGUN_API_KEY:-$(get_parameter "MAILGUN_API_KEY")}"
+
+export DATABASE_URL=$(aws ssm get-parameter --name "/config/production/vbios-platform/DATABASE_URL" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
 
 cat ./entrypoint.sh >> "/tmp/sample-app/enttrypoint.log"
 printenv >> "/tmp/sample-app/printenv.log"
