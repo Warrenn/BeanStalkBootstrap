@@ -1,4 +1,6 @@
 branch-defaults:
+  addingRuby:
+    environment: production
   master:
     environment: VbioPlatform-env
   recovery:
