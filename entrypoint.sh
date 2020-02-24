@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
-## import ##
+export HOST=${HOST:-https://afteryoursurgery.com}
+export LANG=${LANG:-en_US.UTF-8}
+export MAILGUN_DOMAIN=${MAILGUN_DOMAIN:-mg.afteryoursurgery.com}
+export MAIL_HOST_DOMAIN=${MAIL_HOST_DOMAIN:-afteryoursurgery.com}
+export RACK_ENV=${RACK_ENV:-production}
+export RAILS_ENV=${RAILS_ENV:-production}
+export RAILS_LOG_TO_STDOUT=${RAILS_LOG_TO_STDOUT:-enabled}
+export RAILS_SERVE_STATIC_FILES=${RAILS_SERVE_STATIC_FILES:-enabled}
+export WEBPACKER_DEV_SERVER_HOST=${WEBPACKER_DEV_SERVER_HOST:-webpack}
 
 get_parameter() {
     echo "$(aws ssm get-parameter --name "/config/$RAILS_ENV/vbios-platform/$1" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)"
