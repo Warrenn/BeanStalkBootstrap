@@ -3,8 +3,9 @@ set -e
 ## import ##
 
 get_parameter() {
-    echo "$(aws ssm get-parameter --name "/config/$RAILS_ENV/vbios-platform/$1" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)"  >> "/tmp/sample-app/ssm.log"
-    echo "$(aws ssm get-parameter --name "/config/$RAILS_ENV/vbios-platform/$1" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)"
+    value=$(aws ssm get-parameter --name "/config/$RAILS_ENV/vbios-platform/$1" --region us-east-1 --with-decryption --query 'Parameter.Value' --output text)
+    echo "$value" >> "/tmp/sample-app/get_parameter.log"
+    echo "$value"
 }
 
 if ( exec 2>/dev/null ; echo > /dev/tcp/169.254.169.254/80 ) ; then
